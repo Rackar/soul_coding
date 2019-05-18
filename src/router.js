@@ -25,6 +25,11 @@ export default new Router({
           path: "About",
           name: "About",
           component: () => import("./views/soul/About.vue")
+        },
+        {
+          path: "resume",
+          name: "resume",
+          component: () => import("./views/soul/resume.vue")
         }
       ]
     }
