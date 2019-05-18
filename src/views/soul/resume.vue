@@ -19,7 +19,8 @@
         <li>大学：普林斯顿大学</li>
       </ul>
       <br />
-      工作经验--no-verify
+      工作经验
+      <!-- --no-verify -->
       <ul class="work">
         <li>百度</li>
         <li>腾讯</li>
