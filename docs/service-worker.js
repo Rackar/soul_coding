@@ -11,13 +11,13 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
-
 importScripts(
-  "precache-manifest.997ba64ee1b0e91e702b3268bf6b1db3.js"
+  "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "soul_coding"});
+importScripts("precache-manifest.997ba64ee1b0e91e702b3268bf6b1db3.js");
+
+workbox.core.setCacheNameDetails({ prefix: "soul_coding" });
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
