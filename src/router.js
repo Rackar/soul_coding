@@ -30,6 +30,11 @@ export default new Router({
           path: "resume",
           name: "resume",
           component: () => import("./views/soul/resume.vue")
+        },
+        {
+          path: "productlist",
+          name: "productlist",
+          component: () => import("./views/soul/productList/list.vue")
         }
       ]
     }
