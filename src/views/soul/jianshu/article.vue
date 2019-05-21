@@ -10,13 +10,21 @@
       <div class="right">按钮</div>
     </div>
     <div class="contant">{{ article.contant }}</div>
+
+    <div v-html="output" class="markdown-body"></div>
   </div>
 </template>
 
 <script>
+// import markdownEditor from "vue-simplemde/src/markdown-editor";
 export default {
+  components: {
+    // markdownEditor
+  },
+
   data() {
     return {
+      // output: "",
       article: {
         title: "如何轻松",
         contant: `介绍
@@ -37,11 +45,15 @@ export default {
   methods: {
     initArticle() {
       this.article.contant = "今天的内容是xxxxxx，文章id" + this.id;
+      // this.output = this.simplemde.markdown(this.content);
     }
   },
   computed: {
     id() {
       return this.$route.params.id;
+    },
+    output() {
+      return this.$store.state.output;
     }
   },
   watch: {
@@ -53,6 +65,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~simplemde/dist/simplemde.min.css";
 .main {
   text-align: left;
   width: 100%;
