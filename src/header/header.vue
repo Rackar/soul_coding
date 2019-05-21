@@ -38,7 +38,7 @@ export default {
 // }
 .ui {
   text-align: left;
-  width: 700px;
+  // width: 700px;
   // height: 50px;
   list-style: none;
   margin: 0;

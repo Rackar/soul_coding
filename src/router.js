@@ -35,6 +35,16 @@ export default new Router({
           path: "productlist",
           name: "productlist",
           component: () => import("./views/soul/productList/list.vue")
+        },
+        {
+          path: "trello",
+          name: "trello",
+          component: () => import("./views/soul/trello/index.vue")
+        },
+        {
+          path: "jianshu",
+          name: "jianshu",
+          component: () => import("./views/soul/jianshu.vue")
         }
       ]
     }
