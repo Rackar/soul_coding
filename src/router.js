@@ -40,6 +40,16 @@ export default new Router({
           path: "ele_taobao",
           name: "ele_taobao",
           component: () => import("./views/soul/ele_taobao.vue")
+        },
+        {
+          path: "trello",
+          name: "trello",
+          component: () => import("./views/soul/trello/index.vue")
+        },
+        {
+          path: "jianshu",
+          name: "jianshu",
+          component: () => import("./views/soul/jianshu.vue")
         }
       ]
     }
