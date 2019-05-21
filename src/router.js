@@ -35,6 +35,11 @@ export default new Router({
           path: "productlist",
           name: "productlist",
           component: () => import("./views/soul/productList/list.vue")
+        },
+        {
+          path: "ele_taobao",
+          name: "ele_taobao",
+          component: () => import("./views/soul/ele_taobao.vue")
         }
       ]
     }
