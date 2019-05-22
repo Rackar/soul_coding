@@ -1,8 +1,9 @@
 <template>
   <div class="calc">
     <h2>航摄参数计算</h2>
+    <div class="copy">杨旭</div>
     <el-card class="box-card">
-      <el-form ref="form" :inline="false" :model="form" label-width="120px">
+      <el-form ref="form" :inline="false" :model="form" label-width="140px">
         <el-form-item label="航摄仪选择">
           <el-select
             v-model="form.cam"
@@ -31,22 +32,22 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="地面分辨率">
+        <el-form-item label="地面分辨率（米）">
           <el-input v-model="form.fenbianlv"></el-input>
         </el-form-item>
-        <el-form-item label="旁向重叠度">
+        <el-form-item label="旁向重叠度（%）">
           <el-input v-model="form.pxchongdie"></el-input>
         </el-form-item>
-        <el-form-item label="航向重叠度">
+        <el-form-item label="航向重叠度（%）">
           <el-input v-model="form.hxchongdie"></el-input>
         </el-form-item>
-        <el-form-item label="测区长度">
+        <el-form-item label="测区长度（公里）">
           <el-input v-model="form.changdu"></el-input>
         </el-form-item>
-        <el-form-item label="测区宽度">
+        <el-form-item label="测区宽度（公里）">
           <el-input v-model="form.kuandu"></el-input>
         </el-form-item>
-        <el-form-item label="单架次航时">
+        <el-form-item label="单架次航时（时）">
           <el-input v-model="form.dancixiaoshi"></el-input>
         </el-form-item>
         <el-divider></el-divider>
@@ -261,18 +262,18 @@ export default {
 
   methods: {
     onSubmit() {
-      console.log("submit!");
+      //   console.log("submit!");
     },
     setCam(value) {
-      console.log(value);
+      //   console.log(value);
       let selectCam = this.cams.filter(cam => cam.name == value);
-      console.log(selectCam[0]);
+      //   console.log(selectCam[0]);
       this.cam = selectCam[0];
     },
     setPlane(value) {
-      console.log(value);
+      //   console.log(value);
       let selectPlane = this.planes.filter(plane => plane.name == value);
-      console.log(selectPlane[0]);
+      //   console.log(selectPlane[0]);
       this.plane = selectPlane[0];
     }
   },
@@ -330,6 +331,14 @@ export default {
 
 <style lang="scss">
 .calc {
+  .copy {
+    position: fixed;
+    right: 4px;
+    top: 4px;
+    font-size: 24px;
+    // opacity: 0.5;
+    color: rgba(202, 223, 226, 0.322);
+  }
   div.el-form-item {
     margin-bottom: 4px;
   }
@@ -338,6 +347,9 @@ export default {
   }
   .result {
     text-align: left;
+  }
+  span.el-tag {
+    margin-right: 5px;
   }
 }
 </style>
