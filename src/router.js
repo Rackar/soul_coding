@@ -7,9 +7,10 @@ export default new Router({
   routes: [
     {
       path: "/",
-      // redirect: "/p"
-      name: "menu",
-      component: () => import("./views/main.vue")
+      component: () => import("./views/calc/index.vue")
+      // redirect: "/calc"
+      // name: "menu",
+      // component: () => import("./views/main.vue")
     },
     {
       path: "/p",
@@ -45,6 +46,11 @@ export default new Router({
           path: "trello",
           name: "trello",
           component: () => import("./views/soul/trello/index.vue")
+        },
+        {
+          path: "calc",
+          name: "calc",
+          component: () => import("./views/calc/index.vue")
         },
         {
           path: "jianshu",
