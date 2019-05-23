@@ -12,14 +12,17 @@
     <div class="contant">{{ article.contant }}</div>
 
     <div v-html="output" class="markdown-body"></div>
+    <articlefooter></articlefooter>
   </div>
 </template>
 
 <script>
+import articlefooter from "./article_footer";
 // import markdownEditor from "vue-simplemde/src/markdown-editor";
 export default {
   components: {
     // markdownEditor
+    articlefooter
   },
 
   data() {
