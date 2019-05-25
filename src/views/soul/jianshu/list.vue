@@ -16,7 +16,7 @@ export default {
         {
           title: "标题1",
           id: "224",
-          contant:
+          content:
             "背景 天天5岁以后，明显开始不好说服和指挥了。之前随意指挥一下“该做Book Room了”（英语app阅读任务），他就颠颠的配合你做，可现在会找...",
           count_some: "0",
           count_view: "0",
@@ -28,7 +28,7 @@ export default {
         {
           title: "标题2",
           id: "223",
-          contant:
+          content:
             "背景 天天5岁以后，明显开始不好说服和指挥了。之前随意指挥一下“该做Book Room了”（英语app阅读任务），他就颠颠的配合你做，可现在会找...",
           count_some: "0",
           count_view: "0",
@@ -40,7 +40,7 @@ export default {
         {
           title: "标题3",
           id: "225",
-          contant:
+          content:
             "背景 天天5岁以后，明显开始不好说服和指挥了。之前随意指挥一下“该做Book Room了”（英语app阅读任务），他就颠颠的配合你做，可现在会找...",
           count_some: "0",
           count_view: "0",
@@ -51,6 +51,19 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    this.getAllList();
+  },
+  methods: {
+    getAllList() {
+      this.$axios.get("http://localhost:3000/article/").then(res => {
+        console.log(res);
+        // this.lists = res.data;
+        this.lists = [];
+        this.lists.push(...res.data);
+      });
+    }
   }
 };
 </script>

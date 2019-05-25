@@ -2,7 +2,8 @@
   <div class="list">
     <div class="left">
       <h2 @click="$router.push(url)">{{ mydata.title }}</h2>
-      <div>{{ mydata.contant }}</div>
+      <!-- <div>{{ mydata.content }}</div> -->
+      <div v-html="mydata.content" class="markdown-body"></div>
       <div>
         <span class="el-icon-message info">{{ mydata.count_some }}</span>
         <span class="el-icon-message info">{{ mydata.count_view }}</span>
@@ -21,6 +22,14 @@
 
 <script>
 export default {
+  data() {
+    return {
+      content: {}
+    };
+  },
+  mounted() {
+    // this.content = this.simplemde.markdown(this.mydata.content);
+  },
   props: {
     mydata: {
       type: Object,
@@ -28,7 +37,7 @@ export default {
         return {
           title: "标题",
           id: "",
-          contant:
+          content:
             "背景 天天5岁以后，明显开始不好说服和指挥了。之前随意指挥一下“该做Book Room了”（英语app阅读任务），他就颠颠的配合你做，可现在会找...",
           count_some: "0",
           count_view: "0",
@@ -44,6 +53,12 @@ export default {
     url() {
       return "/p/jianshu/article/" + this.mydata.id;
     }
+    // simplemde() {
+    //   return this.$refs.markdownEditor.simplemde;
+    // },
+    // newcontent() {
+    //   return this.mydata.content;
+    // }
   }
 };
 </script>

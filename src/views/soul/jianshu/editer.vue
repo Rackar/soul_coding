@@ -49,6 +49,14 @@ export default {
       // console.log(this.content);
       this.output = this.simplemde.markdown(this.content);
       this.$store.commit("saveTempContent", this.output);
+      let body = {
+        title: "题目",
+        content: this.output
+      };
+      // body = JSON.stringify(body);
+      this.$axios.post("http://localhost:3000/article", body).then(res => {
+        console.log(res);
+      });
     }
   }
 };
