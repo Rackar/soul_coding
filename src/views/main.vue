@@ -1,30 +1,30 @@
 <template>
   <div class="main">
-    <h1>说明</h1>
-    <el-menu class="el-menu-demo" mode="horizontal">
+    <h2>我是谁</h2>
+    <el-card class="box-card">
+      杨旭，注册测绘师，测绘高级工程师，业余码农。CSDN，简书。贪多嚼不烂，什么都喜欢。写过前端vue.js，用过数据库PostgreSQL,MongoDB，引擎Unity,Cocos，
+    </el-card>
+    <!-- <el-menu class="el-menu-demo" mode="horizontal">
       <el-menu-item index="4">首页</el-menu-item>
       <el-menu-item index="1">个人介绍</el-menu-item>
       <el-submenu index="2">
-        <template slot="title"
-          >项目链接</template
-        >
+        <template slot="title">项目链接</template>
         <el-menu-item index="2-1">选项1</el-menu-item>
         <el-menu-item index="2-2">选项2</el-menu-item>
         <el-menu-item index="2-3">选项3</el-menu-item>
       </el-submenu>
 
       <el-submenu index="3">
-        <template slot="title"
-          >文章列表</template
-        >
+        <template slot="title">文章列表</template>
         <el-menu-item index="3-1">选项1</el-menu-item>
         <el-menu-item index="3-2">选项2</el-menu-item>
         <el-menu-item index="3-3">选项3</el-menu-item>
       </el-submenu>
-    </el-menu>
-
-    软件介绍：
-    <soft v-for="x in mysoft" :soft="x" :key="x.id" />
+    </el-menu>软件介绍： -->
+    <h2>我的软件</h2>
+    <el-card class="box-card">
+      <soft v-for="x in mysoft" :soft="x" :key="x.id" />
+    </el-card>
   </div>
 </template>
 
@@ -70,7 +70,6 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-  width: 900px;
-  // overflow:scroll;
+  // width: 900px;
 }
 </style>

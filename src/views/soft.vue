@@ -71,7 +71,7 @@ export default {
         font-size: 20px;
         .title {
           font-family: Arial, Helvetica, sans-serif;
-          background-color: rgb(214, 255, 255);
+          background-color: rgb(225, 236, 236);
           border-radius: 5px;
           padding: 1px 4px;
           font-weight: bold;
