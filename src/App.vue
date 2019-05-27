@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <!-- <myheader></myheader> -->
-    <router-view />
+    <calc></calc>
+    <!-- <router-view /> -->
   </div>
 </template>
 <script>
-import myheader from "./header/header.vue";
+import calc from "./views/calc/index.vue";
 export default {
   components: {
-    myheader
+    calc
   }
 };
 </script>

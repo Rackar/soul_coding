@@ -1,90 +1,122 @@
 <template>
   <div class="calc">
-    <h2>航摄参数计算</h2>
+    <el-tooltip
+      class="item"
+      effect="light"
+      content="联系反馈：杨旭18647119841"
+      placement="bottom"
+    >
+      <h2>航摄参数计算</h2>
+    </el-tooltip>
     <div class="copy">杨旭</div>
-    <el-card class="box-card">
-      <el-form ref="form" :inline="false" :model="form" label-width="140px">
-        <el-form-item label="航摄仪选择">
-          <el-select
-            v-model="form.cam"
-            placeholder="请选择航摄仪"
-            @change="setCam"
-          >
-            <el-option
-              v-for="cam in cams"
-              :label="cam.name"
-              :value="cam.name"
-              :key="cam.id"
-            ></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="飞机选择">
-          <el-select
-            v-model="form.plane"
-            placeholder="请选择飞机"
-            @change="setPlane"
-          >
-            <el-option
-              v-for="plane in planes"
-              :label="plane.name"
-              :value="plane.name"
-              :key="plane.id"
-            ></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="地面分辨率（米）">
-          <el-input v-model="form.fenbianlv"></el-input>
-        </el-form-item>
-        <el-form-item label="旁向重叠度（%）">
-          <el-input v-model="form.pxchongdie"></el-input>
-        </el-form-item>
-        <el-form-item label="航向重叠度（%）">
-          <el-input v-model="form.hxchongdie"></el-input>
-        </el-form-item>
-        <el-form-item label="测区长度（公里）">
-          <el-input v-model="form.changdu"></el-input>
-        </el-form-item>
-        <el-form-item label="测区宽度（公里）">
-          <el-input v-model="form.kuandu"></el-input>
-        </el-form-item>
-        <el-form-item label="单架次航时（时）">
-          <el-input v-model="form.dancixiaoshi"></el-input>
-        </el-form-item>
-        <el-divider></el-divider>
-        <!-- <el-button type="primary" @click="onSubmit">计算</el-button> -->
+    <el-row :gutter="10">
+      <el-col :xs="0" :sm="3" :md="6" :lg="8" :xl="8">
+        <div class="grid-content bg-purple">&nbsp;</div>
+      </el-col>
+      <el-col :xs="24" :sm="18" :md="12" :lg="8" :xl="8">
+        <el-card class="box-card">
+          <el-form ref="form" :inline="false" :model="form" label-width="140px">
+            <el-form-item label="航摄仪选择">
+              <el-select
+                v-model="form.cam"
+                placeholder="请选择航摄仪"
+                @change="setCam"
+              >
+                <!-- <el-tooltip class="item" effect="dark" content="Top Left 提示文字" placement="top-start"> -->
+                <el-option
+                  v-for="cam in cams"
+                  :label="cam.name"
+                  :value="cam.name"
+                  :key="cam.id"
+                ></el-option>
+                <!-- </el-tooltip> -->
+              </el-select>
+              <!-- <i class="el-icon-circle-plus"></i> -->
+            </el-form-item>
+            <el-form-item label="飞机选择">
+              <el-select
+                v-model="form.plane"
+                placeholder="请选择飞机"
+                @change="setPlane"
+              >
+                <el-option
+                  v-for="plane in planes"
+                  :label="plane.name"
+                  :value="plane.name"
+                  :key="plane.id"
+                ></el-option>
+              </el-select>
+              <!-- <i class="el-icon-circle-plus"></i> -->
+            </el-form-item>
+            <el-form-item label="地面分辨率（米）">
+              <el-input v-model="form.fenbianlv"></el-input>
+            </el-form-item>
+            <el-form-item label="旁向重叠度（%）">
+              <el-input v-model="form.pxchongdie"></el-input>
+            </el-form-item>
+            <el-form-item label="航向重叠度（%）">
+              <el-input v-model="form.hxchongdie"></el-input>
+            </el-form-item>
+            <el-form-item label="测区长度（公里）">
+              <el-input v-model="form.changdu"></el-input>
+            </el-form-item>
+            <el-form-item label="测区宽度（公里）">
+              <el-input v-model="form.kuandu"></el-input>
+            </el-form-item>
+            <el-form-item label="单架次航时（时）">
+              <el-input v-model="form.dancixiaoshi"></el-input>
+            </el-form-item>
+            <el-divider></el-divider>
+            <!-- <el-button type="primary" @click="onSubmit">计算</el-button> -->
 
-        <div class="result">
-          <el-row :gutter="20">
-            <!-- <el-row type="flex" class="row-bg" justify="space-around"> -->
-            <el-col :span="24"
-              ><el-tag>相对航高</el-tag>{{ XDhanggao }}米</el-col
-            >
-          </el-row>
-          <el-row :gutter="20">
-            <el-col :span="12"><el-tag>基线长度</el-tag>{{ jixian }}米</el-col>
-            <el-col :span="12"><el-tag>航线间隔</el-tag>{{ jiange }}米</el-col>
-          </el-row>
-          <el-row :gutter="20">
-            <!-- <el-row type="flex" class="row-bg" justify="space-around"> -->
-            <el-col :span="12"
-              ><el-tag>航片数量</el-tag>{{ hangpian }}片</el-col
-            >
-            <el-col :span="12"
-              ><el-tag>航线数量</el-tag>{{ hangxian }}条</el-col
-            >
-          </el-row>
-          <el-row :gutter="20">
-            <!-- <el-row type="flex" class="row-bg" justify="space-around"> -->
-            <el-col :span="12"
-              ><el-tag>作业航程</el-tag>{{ hangcheng }}公里</el-col
-            >
-            <el-col :span="12"
-              ><el-tag>作业小时</el-tag>{{ xiaoshi }}小时</el-col
-            >
-          </el-row>
-        </div>
-      </el-form>
-    </el-card>
+            <div class="result">
+              <el-row :gutter="20">
+                <!-- <el-row type="flex" class="row-bg" justify="space-around"> -->
+                <el-col :span="24">
+                  <el-tag>相对航高</el-tag>
+                  {{ XDhanggao }}米
+                </el-col>
+              </el-row>
+              <el-row :gutter="20">
+                <el-col :span="12">
+                  <el-tag>基线长度</el-tag>
+                  {{ jixian }}米
+                </el-col>
+                <el-col :span="12">
+                  <el-tag>航线间隔</el-tag>
+                  {{ jiange }}米
+                </el-col>
+              </el-row>
+              <el-row :gutter="20">
+                <!-- <el-row type="flex" class="row-bg" justify="space-around"> -->
+                <el-col :span="12">
+                  <el-tag>航片数量</el-tag>
+                  {{ hangpian }}片
+                </el-col>
+                <el-col :span="12">
+                  <el-tag>航线数量</el-tag>
+                  {{ hangxian }}条
+                </el-col>
+              </el-row>
+              <el-row :gutter="20">
+                <!-- <el-row type="flex" class="row-bg" justify="space-around"> -->
+                <el-col :span="12">
+                  <el-tag>作业航程</el-tag>
+                  {{ hangcheng }}公里
+                </el-col>
+                <el-col :span="12">
+                  <el-tag>作业小时</el-tag>
+                  {{ xiaoshi }}小时
+                </el-col>
+              </el-row>
+            </div>
+          </el-form>
+        </el-card>
+      </el-col>
+      <el-col :xs="0" :sm="3" :md="6" :lg="8" :xl="8">
+        <div class="grid-content bg-purple">&nbsp;</div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
