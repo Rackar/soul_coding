@@ -36,7 +36,7 @@ export default {
       default() {
         return {
           title: "标题",
-          id: "",
+          _id: "",
           content:
             "背景 天天5岁以后，明显开始不好说服和指挥了。之前随意指挥一下“该做Book Room了”（英语app阅读任务），他就颠颠的配合你做，可现在会找...",
           count_some: "0",
@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     url() {
-      return "/p/jianshu/article/" + this.mydata.id;
+      return "/p/jianshu/article/" + this.mydata._id;
     }
     // simplemde() {
     //   return this.$refs.markdownEditor.simplemde;

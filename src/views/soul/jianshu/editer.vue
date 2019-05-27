@@ -1,5 +1,6 @@
 <template>
   <div class="editer">
+    <el-input v-model="title"></el-input>
     <markdown-editor
       v-model="content"
       :configs="configs"
@@ -32,6 +33,7 @@ export default {
   },
   data() {
     return {
+      title: "",
       output: "",
       content: "",
       configs: {
@@ -50,8 +52,14 @@ export default {
       this.output = this.simplemde.markdown(this.content);
       this.$store.commit("saveTempContent", this.output);
       let body = {
-        title: "题目",
-        content: this.output
+        title: this.title,
+        content: this.content.substring(0, 50),
+        output: this.output,
+        time: new Date(),
+        count_some: 0,
+        count_view: 0,
+        count_comit: 0,
+        count_like: 0
       };
       // body = JSON.stringify(body);
       this.$axios.post("http://localhost:3000/article", body).then(res => {

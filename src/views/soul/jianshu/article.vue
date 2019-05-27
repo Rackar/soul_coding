@@ -4,14 +4,15 @@
     <div class="info">
       <div class="left">图片</div>
       <div class="middle">
-        <div class="top">{{ article.writer.name }}</div>
-        <div class="bottle">{{ article.info }}</div>
+        <div class="top"></div>
+        <div class="bottle"></div>
       </div>
       <div class="right">按钮</div>
     </div>
-    <div class="contant">{{ article.contant }}</div>
 
-    <div v-html="output" class="markdown-body"></div>
+    <!-- <div class="contant">{{ article.output }}</div> -->
+
+    <div v-html="article.output" class="markdown-body"></div>
     <articlefooter></articlefooter>
   </div>
 </template>
@@ -47,7 +48,14 @@ export default {
   },
   methods: {
     initArticle() {
-      this.article.contant = "今天的内容是xxxxxx，文章id" + this.id;
+      this.$axios
+        .get("http://localhost:3000/article/" + this.id)
+        .then(result => {
+          console.log(result);
+          this.article = result.data[0];
+        });
+
+      // this.article.contant = "今天的内容是xxxxxx，文章id" + this.id;
       // this.output = this.simplemde.markdown(this.content);
     }
   },
@@ -72,6 +80,11 @@ export default {
 .main {
   text-align: left;
   width: 100%;
+  .markdown-body {
+    margin: 30px;
+    border: 1px orange solid;
+    padding: 20px;
+  }
   .info {
     div {
       display: inline-block;

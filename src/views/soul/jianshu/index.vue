@@ -1,7 +1,7 @@
 <template>
   <div class="main">
-    <div class="link" @click="$router.push('/p/jianshu/')">简书</div>
-    <div class="link" @click="$router.push('/p/jianshu/edit')">编辑</div>
+    <!-- <div class="link" @click="$router.push('/p/jianshu/')">简书</div> -->
+    <div class="link" @click="$router.push('/p/jianshu/edit')">发布新文章</div>
     <div class="link" @click="$router.push('/p/jianshu/list')">列表</div>
     <router-view></router-view>
   </div>
