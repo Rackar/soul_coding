@@ -2,12 +2,12 @@
   <div class="main">
     <h1>{{ article.title }}</h1>
     <div class="info">
-      <div class="left">图片</div>
+      <!-- <div class="left">图片</div>
       <div class="middle">
         <div class="top"></div>
         <div class="bottle"></div>
       </div>
-      <div class="right">按钮</div>
+      <div class="right">按钮</div> -->
     </div>
 
     <!-- <div class="contant">{{ article.output }}</div> -->
@@ -51,8 +51,8 @@ export default {
       this.$axios
         .get("http://localhost:3000/article/" + this.id)
         .then(result => {
-          // console.log(result);
-          this.article = result.data[0];
+          console.log(result);
+          this.article = result.data.data;
         });
 
       // this.article.contant = "今天的内容是xxxxxx，文章id" + this.id;
@@ -80,10 +80,15 @@ export default {
 .main {
   text-align: left;
   width: 100%;
+  h1 {
+    text-align: center;
+  }
   .markdown-body {
     margin: 30px;
-    border: 1px orange solid;
+    border: 3px orange solid;
     padding: 20px;
+    border-radius: 20px;
+    font-size: 18px;
   }
   .info {
     div {

@@ -9,8 +9,11 @@
         <img src="/img/1.jpg" alt="" width="80px" />
       </a>
       <el-button type="success" round class="guanzhu">+关注</el-button>
-      <div>作者名字</div>
-      <div>写了 628467 字，被 507 人关注，获得了 1331 个喜欢</div>
+      <div>作者名字:{{ user.username }}</div>
+      <div>
+        写了 {{ user.count.words }} 字，被
+        {{ user.count.followed }} 人关注，获得了 {{ user.count.liked }} 个喜欢
+      </div>
       <div class="info">
         微信公众号【程序员江湖】 作者黄小斜，斜杠青年，某985硕士，阿里 Java
         研发工程师，于 2018 年秋招拿到
@@ -48,8 +51,21 @@
 export default {
   data() {
     return {
-      textarea: ""
+      textarea: "",
+      user: {}
     };
+  },
+  props: {
+    uid: {
+      type: String,
+      default: "5ced3c4dfbce5c39a85efd5a"
+    }
+  },
+  mounted() {
+    this.$axios.get("/user/" + this.uid).then(res => {
+      console.log(res);
+      this.user = res.data.data;
+    });
   }
 };
 </script>

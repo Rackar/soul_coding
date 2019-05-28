@@ -53,6 +53,7 @@ export default {
     url() {
       return "/p/jianshu/article/" + this.mydata._id;
     }
+    
     // simplemde() {
     //   return this.$refs.markdownEditor.simplemde;
     // },
