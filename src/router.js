@@ -58,6 +58,16 @@ export default new Router({
               component: () => import("./views/soul/jianshu/editer.vue")
             },
             {
+              name: "login",
+              path: "login",
+              component: () => import("./views/soul/jianshu/login.vue")
+            },
+            {
+              name: "signup",
+              path: "signup",
+              component: () => import("./views/soul/jianshu/signup.vue")
+            },
+            {
               name: "list",
               path: "list",
               component: () => import("./views/soul/jianshu/list.vue")

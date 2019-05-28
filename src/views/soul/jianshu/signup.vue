@@ -78,9 +78,13 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.loading = true;
-
+          var form = {
+            username: this.form.user_name,
+            mobile: this.form.tel,
+            pwd: this.form.password
+          };
           this.$axios
-            .post("users/add", this.form)
+            .post("/user/signup", form)
             .then(res => {
               console.log(res);
               if (res.statusText == "OK") {

@@ -9,8 +9,8 @@
       status-icon
       v-loading="loading"
     >
-      <el-form-item label="用户名" prop="user_name">
-        <el-input v-model="form.user_name"></el-input>
+      <el-form-item label="手机号" prop="user_name">
+        <el-input v-model="form.tel"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
         <el-input type="password" v-model="form.password"></el-input>
@@ -41,9 +41,7 @@ export default {
         password2: ""
       },
       rules: {
-        user_name: [
-          { required: true, message: "请输入用户名", trigger: "blur" }
-        ],
+        tel: [{ required: true, message: "请输入手机号", trigger: "blur" }],
         password: [{ required: true, message: "请输入密码", trigger: "change" }]
       }
     };
@@ -65,17 +63,23 @@ export default {
           // })
           this.loading = true;
           this.$axios
-            .post("users/login", this.form)
+            .post("/user/login", {
+              mobile: this.form.tel,
+              pwd: this.form.password
+            })
             .then(res => {
               // console.log(res);
               if (res.statusText == "OK") {
                 //   this.totalstars -= stars;
                 this.$emit("refreshID", this.form.user_name);
+                console.log(res.data);
                 this.loading = false;
                 this.$message({
                   type: "success",
-                  message: "登录成功"
+                  message: res.data && res.data.msg
                 });
+                var token = res.data.data.token;
+                window.localStorage.setItem("token", token);
               } else {
                 this.$message({
                   type: "error",

@@ -51,7 +51,10 @@ export default {
       // console.log(this.content);
       this.output = this.simplemde.markdown(this.content);
       this.$store.commit("saveTempContent", this.output);
+      var token = window.localStorage.getItem("token");
+
       let body = {
+        token: token,
         title: this.title,
         content: this.content.substring(0, 50),
         output: this.output,
@@ -62,7 +65,7 @@ export default {
         count_like: 0
       };
       // body = JSON.stringify(body);
-      this.$axios.post("http://localhost:3000/article", body).then(res => {
+      this.$axios.post("/api/article", body).then(res => {
         // console.log(res);
       });
     }
