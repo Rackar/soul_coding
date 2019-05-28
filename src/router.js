@@ -49,6 +49,7 @@ export default new Router({
         {
           path: "jianshu",
           name: "jianshu",
+          redirect: "jianshu/list",
           component: () => import("./views/soul/jianshu"),
           children: [
             {
@@ -60,6 +61,11 @@ export default new Router({
               name: "list",
               path: "list",
               component: () => import("./views/soul/jianshu/list.vue")
+            },
+            {
+              name: "article",
+              path: "article/:id",
+              component: () => import("./views/soul/jianshu/article.vue")
             },
             {
               name: "article",

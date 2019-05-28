@@ -17,17 +17,17 @@
     </div>
     <div class="nav">4</div>
     <div class="main2">6</div> -->
-    <!-- <div class="main">
+    <div class="main">
       <h2>我是谁</h2>
       <el-card class="box-card">
         杨旭，注册测绘师，测绘高级工程师，业余码农。CSDN，简书。贪多嚼不烂，什么都喜欢。写过前端vue.js，用过数据库PostgreSQL,MongoDB，引擎Unity,Cocos，
       </el-card>
-     
+
       <h2>我的软件</h2>
       <el-card class="box-card">
         <soft v-for="x in mysoft" :soft="x" :key="x.id" />
       </el-card>
-    </div> -->
+    </div>
   </div>
 </template>
 

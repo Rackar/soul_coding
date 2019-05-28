@@ -63,7 +63,7 @@ export default {
       };
       // body = JSON.stringify(body);
       this.$axios.post("http://localhost:3000/article", body).then(res => {
-        console.log(res);
+        // console.log(res);
       });
     }
   }

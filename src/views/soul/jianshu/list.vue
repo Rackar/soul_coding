@@ -58,7 +58,7 @@ export default {
   methods: {
     getAllList() {
       this.$axios.get("http://localhost:3000/article/").then(res => {
-        console.log(res);
+        // console.log(res);
         // this.lists = res.data;
         this.lists = [];
         this.lists.push(...res.data);

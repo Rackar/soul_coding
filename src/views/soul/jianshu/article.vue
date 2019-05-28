@@ -51,7 +51,7 @@ export default {
       this.$axios
         .get("http://localhost:3000/article/" + this.id)
         .then(result => {
-          console.log(result);
+          // console.log(result);
           this.article = result.data[0];
         });
 
