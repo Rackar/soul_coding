@@ -19,7 +19,7 @@
       <!-- <el-form-item>
       
         <el-button @click="$router.replace('/login')">注册</el-button>
-      </el-form-item> -->
+      </el-form-item>-->
     </el-form>
     <el-button type="primary" round @click="onSubmit('form')">登录</el-button>
   </div>
@@ -69,31 +69,42 @@ export default {
             })
             .then(res => {
               // console.log(res);
-              if (res.statusText == "OK") {
+              // debugger;
+              if (res.data.status == 1) {
+                this.loading = false;
                 //   this.totalstars -= stars;
                 this.$emit("refreshID", this.form.user_name);
                 console.log(res.data);
-                this.loading = false;
+
                 this.$message({
+                  showClose: true,
+                  duration: 1500,
                   type: "success",
                   message: res.data && res.data.msg
                 });
-                var token = res.data.data.token;
+                var token = "Bearer " + res.data.data.token;
                 window.localStorage.setItem("token", token);
+                // this.$store.state.token = token;
+                this.$store.commit("login_saveToken", token);
               } else {
+                this.loading = false;
                 this.$message({
+                  showClose: true,
+                  duration: 1500,
                   type: "error",
-                  message: "登录失败，用户名或者密码错误"
+                  message: res.data && res.data.msg
                 });
               }
             })
             .catch(err => {
+              this.loading = false;
               console.log(err);
               this.$message({
+                showClose: true,
+                duration: 1500,
                 type: "error",
-                message: err.response.data
+                message: err.response.data.msg
               });
-              this.loading = false;
             });
         } else {
           console.log("error submit!!");

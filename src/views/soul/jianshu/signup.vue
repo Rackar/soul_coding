@@ -1,13 +1,7 @@
 <template>
   <div style="width:280px;">
     <!-- <h2 style="text-align:center">注册账号</h2> -->
-    <el-form
-      ref="form"
-      :model="form"
-      label-width="80px"
-      :rules="rules"
-      v-loading="loading"
-    >
+    <el-form ref="form" :model="form" label-width="80px" :rules="rules" v-loading="loading">
       <el-form-item label="用户名" prop="user_name">
         <el-input v-model="form.user_name"></el-input>
       </el-form-item>
@@ -92,17 +86,23 @@ export default {
                 //   this.totalstars -= stars;
                 this.$emit("refreshID", this.form.user_name);
                 this.$message({
+                  showClose: true,
+                  duration: 1500,
                   type: "success",
                   message: "注册成功"
                 });
               } else {
                 if (res.status == 403)
                   this.$message({
+                    showClose: true,
+                    duration: 1500,
                     type: "error",
                     message: "用户名已存在，请更换重试"
                   });
                 else
                   this.$message({
+                    showClose: true,
+                    duration: 1500,
                     type: "error",
                     message: "注册失败，请报告管理员"
                   });
@@ -111,6 +111,8 @@ export default {
             .catch(err => {
               console.log(err);
               this.$message({
+                showClose: true,
+                duration: 1500,
                 type: "error",
                 message: err.response.data
               });

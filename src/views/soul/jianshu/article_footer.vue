@@ -2,11 +2,12 @@
   <div class="myfooter">
     <el-button type="danger" round>赞赏支持</el-button>
     <div class="jubao">
-      <span class="right">举报</span> <span class="left">文集</span>
+      <span class="right">举报</span>
+      <span class="left">文集</span>
     </div>
     <div class="writer">
-      <a href="" class="pic">
-        <img src="/img/1.jpg" alt="" width="80px" />
+      <a href class="pic">
+        <img src="/img/1.jpg" alt width="80px">
       </a>
       <el-button type="success" round class="guanzhu">+关注</el-button>
       <div>作者名字:{{ user.username }}</div>
@@ -31,19 +32,14 @@
     <div></div>
 
     <div class="pinglun">
-      <a href="" class="pic">
-        <img src="/img/1.jpg" alt="" width="80px" />
+      <a href class="pic">
+        <img src="/img/1.jpg" alt width="80px">
       </a>
-      <el-input
-        type="textarea"
-        :rows="2"
-        placeholder="请输入内容"
-        v-model="textarea"
-        class="textbox"
-      >
-      </el-input>
+      <el-input type="textarea" :rows="2" placeholder="请输入内容" v-model="textarea" class="textbox"></el-input>
     </div>
-    <div><el-button>发送</el-button></div>
+    <div>
+      <el-button>发送</el-button>
+    </div>
   </div>
 </template>
 
@@ -52,20 +48,25 @@ export default {
   data() {
     return {
       textarea: "",
-      user: {}
+      user: { count: {} }
     };
   },
   props: {
     uid: {
       type: String,
-      default: "5ced3c4dfbce5c39a85efd5a"
+      default: ""
     }
   },
-  mounted() {
-    this.$axios.get("/user/" + this.uid).then(res => {
-      console.log(res);
-      this.user = res.data.data;
-    });
+  mounted() {},
+  watch: {
+    uid(newValue, oldValue) {
+      if (newValue != "") {
+        this.$axios.get("/user/" + this.uid).then(res => {
+          console.log(res);
+          this.user = res.data.data;
+        });
+      }
+    }
   }
 };
 </script>

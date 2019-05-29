@@ -1,11 +1,7 @@
 <template>
   <div class="editer">
     <el-input v-model="title"></el-input>
-    <markdown-editor
-      v-model="content"
-      :configs="configs"
-      ref="markdownEditor"
-    ></markdown-editor>
+    <markdown-editor v-model="content" :configs="configs" ref="markdownEditor"></markdown-editor>
 
     <el-button @click="save">保存</el-button>
     <!-- {{ content }} -->
@@ -65,9 +61,34 @@ export default {
         count_like: 0
       };
       // body = JSON.stringify(body);
-      this.$axios.post("/api/article", body).then(res => {
-        console.log(res);
-      });
+      this.$axios.post("/api/article", body).then(
+        res => {
+          console.log(res);
+          if (res.data && res.data.status == 1) {
+            this.$message({
+              showClose: true,
+              duration: 1000,
+              type: "success",
+              message: "文章发布成功"
+            });
+          } else {
+            this.$message({
+              showClose: true,
+              duration: 1000,
+              type: "error",
+              message: "文章发布失败"
+            });
+          }
+        },
+        err => {
+          this.$message({
+            showClose: true,
+            duration: 1000,
+            type: "error",
+            message: "文章发布失败"
+          });
+        }
+      );
     }
   }
 };

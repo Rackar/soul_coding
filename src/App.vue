@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <myheader></myheader>
-    <router-view />
+    <router-view/>
   </div>
 </template>
 <script>
@@ -9,6 +9,10 @@ import myheader from "./header/header.vue";
 export default {
   components: {
     myheader
+  },
+  mounted() {
+    var token = window.localStorage.token;
+    if (token) this.$store.commit("login_saveToken", token);
   }
 };
 </script>

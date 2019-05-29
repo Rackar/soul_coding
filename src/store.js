@@ -5,9 +5,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    output: ""
+    output: "",
+    token: ""
   },
   mutations: {
+    login_saveToken(state, data) {
+      state.token = data;
+    },
     saveTempContent(state, data) {
       state.output = data;
     }

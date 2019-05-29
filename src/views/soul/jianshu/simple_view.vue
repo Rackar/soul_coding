@@ -15,7 +15,7 @@
     </div>
 
     <div class="right">
-      <img :src="mydata.img_url" alt="" width="120px" />
+      <img :src="mydata.img_url" alt width="120px">
     </div>
   </div>
 </template>
@@ -53,7 +53,7 @@ export default {
     url() {
       return "/p/jianshu/article/" + this.mydata._id;
     }
-    
+
     // simplemde() {
     //   return this.$refs.markdownEditor.simplemde;
     // },
@@ -67,6 +67,7 @@ export default {
 <style lang="scss" scoped>
 .list {
   margin: 12px 3px;
+  margin-left: 30px;
   text-align: left;
   width: 100%;
   .left {
@@ -74,6 +75,9 @@ export default {
     width: 80%;
     h2 {
       cursor: pointer;
+      &:hover {
+        text-decoration-line: underline;
+      }
     }
   }
   .right {

@@ -95,9 +95,7 @@
       "jest-watch-typeahead/testname"
     ]
   },
-  "gitHooks": {
-    
-  },
+  "gitHooks": {},
   "lint-staged": {
     "*.{js,vue}": [
       "vue-cli-service lint",

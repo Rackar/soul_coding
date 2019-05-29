@@ -7,13 +7,13 @@
         <div class="top"></div>
         <div class="bottle"></div>
       </div>
-      <div class="right">按钮</div> -->
+      <div class="right">按钮</div>-->
     </div>
 
     <!-- <div class="contant">{{ article.output }}</div> -->
 
     <div v-html="article.output" class="markdown-body"></div>
-    <articlefooter></articlefooter>
+    <articlefooter :uid="uid"></articlefooter>
   </div>
 </template>
 
@@ -29,6 +29,7 @@ export default {
   data() {
     return {
       // output: "",
+      uid: "",
       article: {
         title: "如何轻松",
         contant: `介绍
@@ -52,7 +53,10 @@ export default {
         .get("http://localhost:3000/article/" + this.id)
         .then(result => {
           console.log(result);
-          this.article = result.data.data;
+          if (result.data.status === 1) {
+            this.article = result.data.data;
+            this.uid = result.data.data.userid;
+          }
         });
 
       // this.article.contant = "今天的内容是xxxxxx，文章id" + this.id;

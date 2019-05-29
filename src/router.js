@@ -49,7 +49,7 @@ export default new Router({
         {
           path: "jianshu",
           name: "jianshu",
-          redirect: "jianshu/list",
+          redirect: "jianshu/login",
           component: () => import("./views/soul/jianshu"),
           children: [
             {
