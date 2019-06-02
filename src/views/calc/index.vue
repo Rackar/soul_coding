@@ -341,14 +341,14 @@ export default {
       );
     },
     hangcheng() {
-      return this.form.kuandu * this.hangxian;
+      return this.form.changdu * this.hangxian;
     },
     hangxian() {
       return Math.round((this.form.kuandu / this.jiange) * 1000) + 1;
     },
     hangpian() {
       return Math.round(
-        (this.form.kuandu / this.jixian) * this.hangxian * 1000
+        (this.form.changdu / this.jixian) * this.hangxian * 1000
       );
     },
     xiaoshi() {
